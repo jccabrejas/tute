@@ -41,3 +41,5 @@ share alike – If you remix, transform, or build upon the material, you must di
 
 # Acknowledgements
 The structure of the Flask app is based on [Miguel Grinbergs Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) and [his book](https://www.oreilly.com/library/view/flask-web-development/9781491991725/)
+
+Thanks to my brother for help and suggestions
