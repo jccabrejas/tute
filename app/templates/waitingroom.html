@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Waiting Room</h1>
+    <p>Press the start button only when everyone has joined! </p>
+    <p></p>
+    <p>Otros jugadores en esta partida:</p>
+    <p></p>
+    {% for user in users %}
+    <p>{{user}}</p>
+    {% endfor %}
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <input type="submit" name="refresh" value="Refresh">
+        <input type="submit" name="start" value="Start">
+    </form>
+{% endblock %}

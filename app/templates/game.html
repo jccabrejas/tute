@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <h1> Hola, {{ current_user.username }}</h1>
+        
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-sm ">
+                                <div class="card text-center" style="width: 10rem;">
+                                        <div class="col">
+                                        Pinta
+                                        <div class="card-body">
+                                        </div>            
+                                        </div>
+                                </div>
+                        </div>
+                        {% for user in users %}
+                        <div class="col-sm ">
+                                <div class="card text-center" style="width: 10rem;">
+                                        <div class="col">
+                                        Carta de {{user.username}} (#{{user.id}})
+                                        <div class="card-body">
+                                        </div>            
+                                        </div>
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div>
+
+        </div>        
+        <hr>
+
+        <div class='wrapper'>
+                <div class='trick'></div>
+        </div>
+        
+        <p></p>
+        <form id=myForm action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+<!--                {% for card in cards %}
+                <input type="submit" name="{{card.card_suit}} - {{ card.card_rank }}" value="{{card.card_suit}} - {{ card.card_rank }}">
+                {% endfor %}
+-->
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-sm ">
+                                <div class="card text-center" style="width: 10rem;">
+                                        <div class="col">
+                                        En esta partida pintan {{trump.card_suit}}
+                                        <div class="card-body">
+                                        <img src="/static/images/{{trump.card_suit}}-{{ trump.card_rank }}.png" width=80% alt="...">
+                                        <h5 class="card-title">{{trump.card_rank}} de {{ trump.card_suit }}</h5>
+                                        </div>            
+                                        </div>
+                                </div>
+                        </div>
+                        {% for card in trick %}
+                        <div class="col-sm ">
+                                <div class="card text-center" style="width: 10rem;">
+                                        <div class="col">
+                                        Carta de jugador(a) {{card.user}}
+                                        <div class="card-body">
+                                        <img src="/static/images/{{card.suit}}-{{ card.rank }}.png" width=80% alt="...">
+                                        <h5 class="card-title">{{card.rank}} de {{ card.suit }}</h5>
+                                        </div>            
+                                        </div>
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div>
+                
+                <hr>
+                <input type="submit" class="btn btn-primary" name="Refrescar" value="Refrescar">
+                <input type="submit" class="btn btn-primary" name="Continuar" value="Continuar">
+                <hr> 
+                <p>Tus cartas son:</p>
+                      
+                <div class="row">
+                    {% for card in cards %}
+                    <div class="col-sm ">
+            
+                        <div class="card text-center" style="width: 10rem;">
+            
+                            <div class="card-body">
+                            <img src="/static/images/{{card.card_suit}}-{{ card.card_rank }}.png" width=80% alt="...">
+                            <h5 class="card-title">{{card.card_rank}} de {{ card.card_suit }}</h5>
+                            <p class="card-text"></p>
+                            <input type="submit" class="btn btn-primary" name="{{card.card_suit}} - {{ card.card_rank }}" value="{{card.card_suit}} - {{ card.card_rank }}">
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+        </div>
+        </form>           
+
+<hr>
+<p>Cartas ganadas en esta partida:</p>
+<div class="row">
+        {% for card in won_cards %}
+        <div class="col-sm ">
+
+            <div class="card text-center" style="width: 10rem;">
+
+                <div class="card-body">
+                <img src="/static/images/{{card.card_suit}}-{{ card.card_rank }}.png" width=80% alt="...">
+                <h5 class="card-title">{{card.card_rank}} de {{ card.card_suit }}</h5>
+                <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+<!--reload every xxx ms-->
+<!--<script>document.getElementById('myForm').reset(); </script>
+-->
+<script>setTimeout('document.location.reload()',4000); </script>
+
+{% endblock %}
